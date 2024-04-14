@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mc_map2png</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+		<div class="mt-8 p-4">
+			<h1 class="text-3xl font-bold text-center my-8 text-blue-600">Minecraft Map to PNG Converter</h1>
+			<p class="text-center mb-6 text-gray-600">This mc_map2png project, written in Rust and compiled to WebAssembly, enables efficient and fast conversion of Minecraft Java Edition 1.20 map data to PNG images directly in your web browser.</p>
+
+			<label for="fileInput" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+
+			<div class="mb-2 flex items-center justify-center w-full">
+				<label for="fileInput" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+					<div class="flex flex-col items-center justify-center pt-5 pb-6">
+						<svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+						</svg>
+						<p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+						<p class="text-xs text-gray-500 dark:text-gray-400">.dat file from Minecraft saves</p>
+					</div>
+					<input id="fileInput" type="file" class="hidden" />
+				</label>
+			</div> 
+
+			<button id="convertButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+				Convert
+			</button>
+
+			<div id="conversionTime" class="mt-4 text-blue-600"></div>
+
+			<img id="outputImage" src="" alt="Converted Image" class="mt-6 mx-auto w-1/2 h-1/2 hidden">
+
+			<button id="downloadButton" class="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hidden">
+				Download PNG
+			</button>
+		</div>
+
+        <div class="mt-8 p-4 bg-white rounded-lg shadow-lg border border-gray-300">
+            <h2 class="font-semibold text-gray-700">File Path Information:</h2>
+            <p class="text-gray-600"><strong>Windows:</strong> C:\Users\USERNAME\AppData\Roaming\.minecraft\saves\WORLD\data\map_X.dat</p>
+            <p class="text-gray-600"><strong>macOS:</strong> ~/Library/Application Support/minecraft\saves\WORLD\data\map_X.dat</p>
+        </div>
+
+        <div class="mt-8 p-4 bg-white rounded-lg shadow-lg border border-gray-300">
+            <h2 class="font-semibold text-gray-700">About the Technology:</h2>
+            <p class="text-gray-600">WebAssembly provides a way to run code written in multiple languages on the web at near-native speed, with client-side execution that provides a better user experience. By compiling Rust code to WASM, we can leverage the performance benefits of Rust, such as memory safety and thread-level parallelism, directly in the browser.</p>
+            <p class="text-gray-600">This tool uses the fastnbt library for parsing NBT (Named Binary Tag) data, and the image library to generate PNG files from the parsed data. The entire process is performed client-side, which allows for rapid processing and minimizes server load.</p>
+        </div>
+    </div>
+	<script src="./index.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
