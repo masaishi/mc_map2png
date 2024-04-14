@@ -54,8 +54,8 @@
     </div>
 
     <script type="module">
-        import init, { process_image_from_memory } from './pkg/mc_map2png.js';
-        
+        import init, { process_image_from_memory } from 'https://unpkg.com/mc_map2png@0.1.0/mc_map2png.js';
+
         init();
         document.getElementById('convertButton').addEventListener('click', async () => {
             const fileInput = document.getElementById('fileInput');
