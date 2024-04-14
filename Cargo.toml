@@ -1,0 +1,29 @@
+workspace = { members = ["doclib"] }
+[package]
+name = "mc_map2png"
+version = "0.1.0"
+edition = "2021"
+description = "This Rust application transforms Minecraft map data from NBT format into a visual PNG image. Additionally, a WebAssembly module is available for converting images on the client side."
+authors = ["masaishi <mwishiha@ucsc.edu>"]
+license = "LICENSE.txt"
+readme = "README.md"
+repository = "https://github.com/masaishi/mc_map2png"
+documentation = "https://docs.rs/mc_map2png"
+keywords = ["minecraft", "map", "nbt", "png", "image", "webassembly"]
+categories = ["graphics", "wasm"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+flate2 = "1"
+fastnbt = "2"
+image = "0.24"
+wasm-bindgen = "0.2"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["rlib", "cdylib"]
+
+[[bin]]
+name = "mc_map2png"
+path = "src/main.rs"
