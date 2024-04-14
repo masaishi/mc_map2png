@@ -20,48 +20,52 @@ The website is built using HTML and Tailwind CSS for styling. It features a simp
 
 ## WebAssembly Usage
 
-To use the WebAssembly module, include the following steps in your web application:
+To use the WebAssembly module with [`mc_map2png`](https://www.npmjs.com/package/mc_map2png), follow these steps in your web application:
 
-1. **Initialize the WASM Module**: First, ensure that the WASM module is loaded and initialized correctly. This is done by importing the initialization function and the specific functions you need from the generated WASM package.
+1. Install the `mc_map2png` package:
 
-    ```javascript
-    import init, { process_image_from_memory } from './path_to_wasm_package/mc_map2png.js';
+   ```
+   npm i mc_map2png
+   ```
 
-    await init();
-    ```
+2. Initialize the WASM Module: Ensure that the WASM module is loaded and initialized correctly. Import the functions from the `mc_map2png` package.
 
-2. **File Processing**: Convert user-uploaded files by reading them into an ArrayBuffer, then passing this buffer to the WASM function:
+   ```javascript
+   import * as mc_map2png from 'mc_map2png';
+   ```
 
-    ```javascript
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
-    const arrayBuffer = await file.arrayBuffer();
-    const result = await process_image_from_memory(new Uint8Array(arrayBuffer));
-    ```
+3. File Processing: Convert user-uploaded files by reading them into an ArrayBuffer, then pass this buffer to the WASM function:
 
-3. **Displaying the Image**: Upon successful conversion, display the image or handle errors appropriately:
+   ```javascript
+   const fileInput = document.getElementById('fileInput');
+   const file = fileInput.files[0];
+   const arrayBuffer = await file.arrayBuffer();
+   const result = await mc_map2png.process_image_from_memory(new Uint8Array(arrayBuffer));
+   ```
 
-    ```javascript
-    if (result instanceof Uint8Array) {
-        const blob = new Blob([result], {type: 'image/png'});
-        const url = URL.createObjectURL(blob);
-        document.getElementById('outputImage').src = url;
-    } else {
-        console.error('Conversion failed.');
-    }
-    ```
+4. Displaying the Image: Upon successful conversion, display the image or handle errors appropriately:
 
-4. **Download Option**: Provide users with the option to download the generated PNG:
+   ```javascript
+   if (result instanceof Uint8Array) {
+     const blob = new Blob([result], { type: 'image/png' });
+     const url = URL.createObjectURL(blob);
+     document.getElementById('outputImage').src = url;
+   } else {
+     console.error('Conversion failed.');
+   }
+   ```
 
-    ```javascript
-    const downloadButton = document.getElementById('downloadButton');
-    downloadButton.onclick = () => {
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(new Blob([result], {type: 'image/png'}));
-        link.download = 'converted-image.png';
-        link.click();
-    };
-    ```
+5. Download Option: Provide users with the option to download the generated PNG:
+
+   ```javascript
+   const downloadButton = document.getElementById('downloadButton');
+   downloadButton.onclick = () => {
+     const link = document.createElement('a');
+     link.href = URL.createObjectURL(new Blob([result], { type: 'image/png' }));
+     link.download = 'converted-image.png';
+     link.click();
+   };
+   ```
 
 ## Installation
 
