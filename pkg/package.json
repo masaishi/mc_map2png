@@ -1,0 +1,32 @@
+{
+  "name": "mc_map2png",
+  "collaborators": [
+    "masaishi <mwishiha@ucsc.edu>"
+  ],
+  "description": "This Rust application transforms Minecraft map data from NBT format into a visual PNG image. Additionally, a WebAssembly module is available for converting images on the client side.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/masaishi/mc_map2png"
+  },
+  "files": [
+    "mc_map2png_bg.wasm",
+    "mc_map2png.js",
+    "mc_map2png_bg.js",
+    "mc_map2png.d.ts"
+  ],
+  "module": "mc_map2png.js",
+  "types": "mc_map2png.d.ts",
+  "sideEffects": [
+    "./mc_map2png.js",
+    "./snippets/*"
+  ],
+  "keywords": [
+    "minecraft",
+    "map",
+    "nbt",
+    "png",
+    "webassembly"
+  ]
+}
