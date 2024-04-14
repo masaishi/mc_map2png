@@ -9,7 +9,7 @@ license = "MIT"
 readme = "README.md"
 repository = "https://github.com/masaishi/mc_map2png"
 documentation = "https://docs.rs/mc_map2png"
-keywords = ["minecraft", "map", "nbt", "png", "image", "webassembly"]
+keywords = ["minecraft", "map", "nbt", "png", "webassembly"]
 categories = ["graphics", "wasm"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
